@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <meta name="description" content="A special Valentine's Day page for the love of my life">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Floating Hearts Canvas -->
+    <canvas id="heartsCanvas"></canvas>
+
+    <!-- Navigation Dots -->
+    <nav class="nav-dots" aria-label="Section navigation">
+        <button class="nav-dot active" data-section="0" aria-label="Intro"></button>
+        <button class="nav-dot" data-section="1" aria-label="Our Time"></button>
+        <button class="nav-dot" data-section="2" aria-label="Memories"></button>
+        <button class="nav-dot" data-section="3" aria-label="Love Letter"></button>
+    </nav>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 1: HERO / INTRO                                            -->
+    <!-- ================================================================== -->
+    <section class="section section-hero" id="hero">
+        <div class="hero-bg-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+
+        <div class="hero-content reveal">
+            <div class="hero-badge">
+                <span>💕</span> February 14, 2026
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line">Happy</span>
+                <span class="title-line accent">Valentine's Day</span>
+            </h1>
+
+            <!-- CUSTOMIZE: Change the names below -->
+            <div class="hero-names glass-card">
+                <span class="name-his">Vikhiat Bhagat</span>
+                <span class="name-heart">❤️</span>
+                <span class="name-hers">Nikita Pruthi</span>
+            </div>
+
+            <!-- CUSTOMIZE: Change the subtitle text -->
+            <p class="hero-subtitle">Every moment with you is a beautiful memory</p>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: TIME TOGETHER COUNTER                                   -->
+    <!-- ================================================================== -->
+    <section class="section section-counter" id="counter">
+        <div class="counter-bg-glow"></div>
+
+        <div class="counter-content">
+            <div class="counter-header reveal">
+                <p class="section-label">Our Journey</p>
+                <h2 class="section-title">Every Second<br><em>With You Counts</em></h2>
+            </div>
+
+            <div class="counter-grid reveal">
+                <div class="counter-card glass-card">
+                    <div class="counter-number" id="count-years">0</div>
+                    <div class="counter-label">Years</div>
+                </div>
+                <div class="counter-card glass-card">
+                    <div class="counter-number" id="count-months">0</div>
+                    <div class="counter-label">Months</div>
+                </div>
+                <div class="counter-card glass-card">
+                    <div class="counter-number" id="count-days">0</div>
+                    <div class="counter-label">Days</div>
+                </div>
+                <div class="counter-card glass-card">
+                    <div class="counter-number" id="count-hours">0</div>
+                    <div class="counter-label">Hours</div>
+                </div>
+                <div class="counter-card glass-card">
+                    <div class="counter-number" id="count-minutes">0</div>
+                    <div class="counter-label">Minutes</div>
+                </div>
+                <div class="counter-card glass-card">
+                    <div class="counter-number" id="count-seconds">0</div>
+                    <div class="counter-label">Seconds</div>
+                </div>
+            </div>
+
+            <!-- CUSTOMIZE: Change the text below -->
+            <p class="counter-message reveal">
+                ...and counting every beautiful moment together 💗
+            </p>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 3: PHOTO GALLERY / MEMORIES                                -->
+    <!-- ================================================================== -->
+    <section class="section section-gallery" id="gallery">
+        <div class="gallery-content">
+            <div class="gallery-header reveal">
+                <p class="section-label">Our Memories</p>
+                <h2 class="section-title">Moments That<br><em>Make Us, Us</em></h2>
+            </div>
+
+            <div class="gallery-scroll-container">
+                <div class="gallery-track">
+
+                    <!-- CUSTOMIZE: Replace image src and caption for each card -->
+                    <!-- Add your photos to the /images/ folder and update the src -->
+
+                    <div class="gallery-card reveal-card">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-img-wrapper">
+                                <!-- CUSTOMIZE: Replace with your photo -->
+                                <img src="images/img_1.jpg" alt="Memory 1" class="gallery-img">
+                            </div>
+                            <div class="gallery-card-caption">
+                                <!-- CUSTOMIZE: Your caption -->
+                                <h3>Our First Date</h3>
+                                <p>Hona Tha Pyaar ✨</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card reveal-card">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-img-wrapper">
+                                <img src="images/img_2.jpg" alt="Memory 2" class="gallery-img">
+                            </div>
+                            <div class="gallery-card-caption">
+                                <h3>That Special One</h3>
+                                <p>Meri Banogi kya 🌟</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card reveal-card">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-img-wrapper">
+                                <img src="/Users/vikhi_at/Downloads/img_3.jpg" alt="Memory 3" class="gallery-img">
+                            </div>
+                            <div class="gallery-card-caption">
+                                <h3>Everyday Magic</h3>
+                                <p>Ik Kudi💫</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card reveal-card">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-img-wrapper">
+                                <img src="images/img4.jpg" alt="Memory 4" class="gallery-img">
+                            </div>
+                            <div class="gallery-card-caption">
+                                <h3>Together Forever</h3>
+                                <p>Adat 💕</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card reveal-card">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-img-wrapper">
+                                <img src="images/img5.jpg" alt="Memory 5" class="gallery-img">
+                            </div>
+                            <div class="gallery-card-caption">
+                                <h3>Date right?</h3>
+                                <p>Rakhlo Tum Chupaake 🎉</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card reveal-card">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-img-wrapper">
+                                <img src="images/img6.jpg" alt="Memory 6" class="gallery-img">
+                            </div>
+                            <div class="gallery-card-caption">
+                                <h3>Always & Forever</h3>
+                                <p>Tum se hi 💖</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="gallery-scroll-hint reveal">
+                <span>← Swipe to see more →</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 4: LOVE LETTER / MESSAGE                                   -->
+    <!-- ================================================================== -->
+    <section class="section section-message" id="message">
+        <div class="message-bg-hearts"></div>
+
+        <div class="message-content">
+            <div class="message-card glass-card reveal">
+                <div class="message-icon">💌</div>
+
+                <!-- CUSTOMIZE: Write your love message below -->
+                <h2 class="message-title">To My Duffer ❤️</h2>
+                <div class="message-text" id="typewriter-text">
+                    <p>
+                        Sorry for being so lazy and not updating you where i am and taking this as burden.
+                        Actually it isn't a burden for me to be with you. I rather not impress this time.
+                        I love you more than words could ever express.
+                    </p>
+                    <p>
+                        Thank you for being you. Thank you for choosing me.
+                        Thank you for every laugh, every hug, every moment we share.
+                    </p>
+                    <p>
+                        झूला झुलाए ये पनघट
+                        नदिया किनारे ये आँगन
+                        निंदिया तू आना हवा के संग
+                        मुझको भी तू दिखाना अपने रंग
+                        तेरा-मेरा गलियों में यूँ फिरना
+                        फिरते-फिरते रातों को यूँ थकना
+                        थक के नानी की गोदी में सोना
+                        परियों के देस जा के ना आना
+                    </p>
+                    <p>
+                     ❤️
+                    </p>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="sorry.html" class="love-btn"
+                            style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.5rem;">
+                            Read My Heart 💌
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CUSTOMIZE: Change the name -->
+                <div class="message-signature">
+                    <span class="signature-text">Forever Yours,</span>
+                    <span class="signature-name">Vicks</span>
+                </div>
+            </div>
+
+            <button class="love-button" id="loveBtn">
+                <span class="btn-text">I Love You ❤️</span>
+                <span class="btn-burst"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Music Player -->
+    <div class="music-player-container" id="musicContainer">
+        <button class="music-btn" id="musicBtn" aria-label="Toggle Music">
+            <span class="music-icon">🎵</span>
+            <span class="music-label">Play Song</span>
+        </button>
+        <div class="volume-controls">
+            <input type="range" id="seekSlider" class="volume-slider" aria-label="Seek">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
