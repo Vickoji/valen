@@ -127,6 +127,14 @@ img {
     justify-content: center;
     scroll-snap-align: start;
     overflow: hidden;
+    z-index: 1;
+    background-color: var(--dark);
+    /* Ensure solid background to prevent see-through */
+}
+
+section+section {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle visual break */
 }
 
 /* Section Labels */
@@ -625,6 +633,11 @@ img {
     background: linear-gradient(135deg, #1a0a14 0%, var(--dark) 40%, #2d1028 100%);
     flex-direction: column;
     padding: var(--section-padding);
+    z-index: 5;
+    /* Higher stacking to avoid intersection issues */
+    position: relative;
+    box-shadow: 0 -50px 100px rgba(0, 0, 0, 0.5);
+    /* Strong shadow to separate from previous section */
 }
 
 .message-bg-hearts {
@@ -931,16 +944,29 @@ img {
 
 .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: var(--pink-400);
-    box-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
-    transition: transform 0.2s;
+    background: var(--white);
+    border: 2px solid var(--pink-400);
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.8);
+    transition: transform 0.2s, background 0.2s;
+    cursor: pointer;
 }
 
 .volume-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+    transform: scale(1.25);
+    background: var(--pink-100);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--pink-400);
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.8);
+    cursor: pointer;
 }
 
 @keyframes musicPulse {
