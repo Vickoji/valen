@@ -460,58 +460,97 @@ class MusicPlayer {
 
         this.isPlaying = false;
         this.isDragging = false;
+
+        this.init();
+    }
+
+    init() {
+        // Toggle Play/Pause
         this.btn.addEventListener('click', () => this.toggle());
 
         if (this.slider) {
-            // Set initial state
             this.slider.value = 0;
             this.slider.min = 0;
+            this.slider.step = 0.1;
 
-            // Update max value when metadata loads
-            this.audio.addEventListener('loadedmetadata', () => {
-                this.slider.max = this.audio.duration;
-            });
+            // Update duration when available (browsers may report it only after play/canplay)
+            const setDuration = () => {
+                if (Number.isFinite(this.audio.duration)) {
+                    this.slider.max = this.audio.duration;
+                }
+            };
 
-            // Fallback for cached audio
-            if (this.audio.readyState >= 1) {
-                this.slider.max = this.audio.duration;
-            }
+            this.audio.addEventListener('loadedmetadata', setDuration);
+            this.audio.addEventListener('durationchange', setDuration);
+            this.audio.addEventListener('canplay', setDuration);
+            if (this.audio.readyState >= 1) setDuration();
 
-            // Update slider as song plays
+            // Update slider current position as audio plays; also try to set duration on first timeupdate
             this.audio.addEventListener('timeupdate', () => {
-                if (!this.isDragging) {
+                setDuration();
+                if (!this.isDragging && Number.isFinite(this.audio.currentTime)) {
                     this.slider.value = this.audio.currentTime;
                 }
             });
 
-            // Handle user seeking
+            // Start dragging: Pause UI updates
+            this.slider.addEventListener('mousedown', () => { this.isDragging = true; });
+            this.slider.addEventListener('touchstart', () => { this.isDragging = true; });
+
+            // During dragging: seek audio in real time so slider feels responsive
             this.slider.addEventListener('input', (e) => {
                 this.isDragging = true;
-                this.audio.currentTime = e.target.value;
+                const targetTime = parseFloat(e.target.value);
+                if (Number.isFinite(targetTime) && this.audio.readyState >= 1) {
+                    this.audio.currentTime = targetTime;
+                }
             });
 
-            this.slider.addEventListener('change', () => {
-                this.isDragging = false;
-                this.audio.currentTime = this.slider.value;
-            });
+            // Finish dragging: ensure seek applied and clear flag (fallback for devices that don't fire input)
+            const endDrag = () => {
+                if (this.isDragging) {
+                    const targetTime = parseFloat(this.slider.value);
+                    if (Number.isFinite(targetTime) && this.audio.readyState >= 1) {
+                        this.audio.currentTime = targetTime;
+                    }
+                    this.isDragging = false;
+                }
+            };
+
+            this.slider.addEventListener('change', endDrag);
+            window.addEventListener('mouseup', () => { if (this.isDragging) this.isDragging = false; });
+            window.addEventListener('touchend', () => { if (this.isDragging) this.isDragging = false; });
         }
+
+        // Handle audio end
+        this.audio.addEventListener('ended', () => {
+            this.isPlaying = false;
+            this.updateUI();
+        });
     }
 
     toggle() {
         if (this.isPlaying) {
             this.audio.pause();
+        } else {
+            this.audio.play().catch(err => console.log("Autoplay blocked or error:", err));
+        }
+        this.isPlaying = !this.isPlaying;
+        this.updateUI();
+    }
+
+    updateUI() {
+        if (this.isPlaying) {
+            this.btn.classList.add('playing');
+            this.container?.classList.add('active');
+            this.btn.querySelector('.music-label').textContent = 'Now Playing';
+            this.btn.querySelector('.music-icon').textContent = '🎶';
+        } else {
             this.btn.classList.remove('playing');
             this.container?.classList.remove('active');
             this.btn.querySelector('.music-label').textContent = 'Play Song';
             this.btn.querySelector('.music-icon').textContent = '🎵';
-        } else {
-            this.audio.play().catch(() => { });
-            this.btn.classList.add('playing');
-            this.container?.classList.add('active'); // Reveal seek bar
-            this.btn.querySelector('.music-label').textContent = 'Now Playing';
-            this.btn.querySelector('.music-icon').textContent = '🎶';
         }
-        this.isPlaying = !this.isPlaying;
     }
 }
 
